@@ -1,6 +1,6 @@
 "use strict";
 
-const numberOfFilms = prompt('How many films have you seen?', '');
+const numberOfFilms = +prompt('How many films have you seen?', '');
 
 let personalMovieDB = {
     count: numberOfFilms,
@@ -10,17 +10,35 @@ let personalMovieDB = {
     privat: false
 };
 
-const lastfilm = prompt('Last film what have you seen?', ''),
-      filmsrating = prompt('Rating of last film?', '');
+for (let i = 0; i < 2; i++) {
+    const lastfilm = prompt('Last film what have you seen?', ''),
+          filmsrating = prompt('Rating of last film?', '');
+    if (lastfilm != null && filmsrating != null && lastfilm != '' && filmsrating != '' && lastfilm.length < 50 && filmsrating.length < 50) {
+        personalMovieDB.movies[lastfilm] = filmsrating;
+        console.log('have done');
+    }else {
+        console.log('error');
+        i--;
+    }
 
-personalMovieDB.movies[lastfilm] = filmsrating;
+}
+
+if (personalMovieDB.count < 10) {
+    console.log('To little films');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log('Classic fun');
+} else if (personalMovieDB.count > 30) {
+    console.log('Kinoman');
+} else {
+    console.log('Error');
+}
 
 console.log(personalMovieDB);
 
 
 
-// document.write(answer);11
 
-// const user = 'Dima';
 
-// alert(`Hi, ${user}!`);
+
+
+
